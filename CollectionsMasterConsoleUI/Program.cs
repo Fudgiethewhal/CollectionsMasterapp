@@ -20,7 +20,7 @@ namespace CollectionsMasterConsoleUI
             Populater(numbers);
 
             //TODO: Print the first number of the array
-            Console.WriteLine(numbers[0]);
+            Console.WriteLine(numbers[0]); 
 
             //TODO: Print the last number of the array
             Console.WriteLine(numbers[numbers.Length - 1]);
@@ -35,6 +35,8 @@ namespace CollectionsMasterConsoleUI
             /*  1) First way, using a custom method => Hint: Array._____(); 
                 2) Second way, Create a custom method (scroll to bottom of page to find ⬇⬇⬇)
             */
+            
+            Array.Reverse(numbers);
 
             Console.WriteLine("All Numbers Reversed:");
 
@@ -44,6 +46,7 @@ namespace CollectionsMasterConsoleUI
 
             //TODO: Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
+            ThreeKiller(numbers);
             
 
             Console.WriteLine("-------------------");
@@ -51,7 +54,8 @@ namespace CollectionsMasterConsoleUI
             //TODO: Sort the array in order now
             /*      Hint: Array.____()      */
             Console.WriteLine("Sorted numbers:");
-            
+            Array.Sort(numbers);
+            NumberPrinter(numbers);
 
             Console.WriteLine("\n************End Arrays*************** \n");
             #endregion
@@ -107,7 +111,15 @@ namespace CollectionsMasterConsoleUI
 
         private static void ThreeKiller(int[] numbers)
         {
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 3 == 0)
+                {
+                    numbers[i] = 0;
+                }
+            }
             
+            NumberPrinter(numbers); 
         }
 
         private static void OddKiller(List<int> numberList)
@@ -138,7 +150,21 @@ namespace CollectionsMasterConsoleUI
 
         private static void ReverseArray(int[] array)
         {
-            
+            int start = 0;
+            int end = array.Length - 1;
+
+            while (start < end)
+            {
+                //Swap elements at start and end positions
+                int temp = array[start];
+                array[start] = array[end];
+                array[end] = temp;
+                
+                //Move the values of the indexes toward each other
+                //by using an increment and decrement
+                start++;
+                end--;
+            }
         }
 
         /// <summary>
